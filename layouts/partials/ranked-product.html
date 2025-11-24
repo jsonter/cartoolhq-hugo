@@ -1,0 +1,42 @@
+<!-- Ranked Product Card -->
+<article class="ranked-product">
+    {{ $rank := .rank }}
+    {{ $badgeClass := "rank-blue" }}
+    {{ if eq $rank 1 }}{{ $badgeClass = "rank-gold" }}{{ end }}
+    {{ if eq $rank 2 }}{{ $badgeClass = "rank-silver" }}{{ end }}
+    {{ if eq $rank 3 }}{{ $badgeClass = "rank-bronze" }}{{ end }}
+    
+    <div class="rank-badge {{ $badgeClass }}">#{{ $rank }}</div>
+    <div class="product-layout">
+        <div class="product-image">
+            {{ with .image }}
+            <img src="{{ . }}" alt="{{ $.name }}">
+            {{ else }}
+            <img src="https://placehold.co/400x400/141414/3b82f6?text=Product+{{ $rank }}" alt="{{ $.name }}">
+            {{ end }}
+        </div>
+        <div class="product-details">
+            <h3 class="product-name">{{ .name }}</h3>
+            <p class="product-specs">{{ .specs }}</p>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h5>✓ Pros</h5>
+                    <ul>
+                        {{ range .pros }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h5>✗ Cons</h5>
+                    <ul>
+                        {{ range .cons }}
+                        <li>{{ . }}</li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+            <a href="{{ .affiliate_link }}" class="btn btn-affiliate" target="_blank" rel="noopener nofollow sponsored">Check Price on Amazon</a>
+        </div>
+    </div>
+</article>

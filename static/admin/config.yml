@@ -1,0 +1,58 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# For local development testing
+# backend:
+#   name: test-repo
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # Listicle Posts
+  - name: "listicles"
+    label: "Listicles"
+    folder: "content/listicles"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Publish Date", name: "date", widget: "datetime", required: true}
+      - {label: "Last Modified", name: "lastmod", widget: "datetime", required: false}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "text", required: true}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "SEO Title", name: "seo_title", widget: "string", required: false}
+      - {label: "SEO Description", name: "seo_description", widget: "text", required: false}
+      - label: "Products"
+        name: "products"
+        widget: "list"
+        required: true
+        fields:
+          - {label: "Rank", name: "rank", widget: "number", value_type: "int", min: 1}
+          - {label: "Product Name", name: "name", widget: "string"}
+          - {label: "Product Image", name: "image", widget: "image", required: false}
+          - {label: "Specs", name: "specs", widget: "string"}
+          - {label: "Affiliate Link", name: "affiliate_link", widget: "string"}
+          - {label: "Pros", name: "pros", widget: "list"}
+          - {label: "Cons", name: "cons", widget: "list"}
+      - {label: "Body", name: "body", widget: "markdown", required: false}
+  
+  # Static Pages
+  - name: "pages"
+    label: "Pages"
+    folder: "content/pages"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Body", name: "body", widget: "markdown"}

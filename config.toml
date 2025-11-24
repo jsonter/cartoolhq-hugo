@@ -1,0 +1,60 @@
+# CarToolHQ Hugo Configuration
+
+baseURL = "https://cartoolhq.com"
+languageCode = "en-us"
+title = "CarToolHQ"
+# Using custom theme (layouts in root, no external theme needed)
+
+# Pagination
+[pagination]
+  pagerSize = 12
+
+# Copyright notice
+copyright = "CarToolHQ. All rights reserved."
+
+[params]
+  description = "Stop Guessing. Start Wrenching. In-depth reviews and rankings of the best automotive tools and accessories."
+  author = "CarToolHQ Team"
+  
+  # Social links
+  youtube = ""
+  instagram = ""
+  facebook = ""
+  
+  # Affiliate disclosure
+  affiliateDisclosure = "CarToolHQ participates in the Amazon Services LLC Associates Program and other affiliate programs. We may earn a commission when you purchase products through our links, at no additional cost to you. This helps support our research and testing efforts."
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow HTML in markdown for flexibility
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  
+  [[menu.main]]
+    name = "Reviews"
+    url = "/listicles/"
+    weight = 2
+  
+  [[menu.main]]
+    name = "Categories"
+    url = "/categories/"
+    weight = 3
+  
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+
+# Taxonomies
+[taxonomies]
+  category = "categories"
+  tag = "tags"

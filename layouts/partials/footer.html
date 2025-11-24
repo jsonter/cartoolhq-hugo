@@ -1,0 +1,42 @@
+<!-- Footer -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>{{ .Site.Title }}</h4>
+                <p>{{ .Site.Params.description }}</p>
+            </div>
+            <div class="footer-section">
+                <h5>Quick Links</h5>
+                <ul>
+                    <li><a href="/about/">About Us</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                    <li><a href="/privacy/">Privacy Policy</a></li>
+                    <li><a href="/terms/">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Categories</h5>
+                <ul>
+                    {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+                    <li><a href="/categories/{{ $name | urlize }}/">{{ $name | humanize | title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h5>Follow Us</h5>
+                <div class="social-links">
+                    {{ with .Site.Params.youtube }}<a href="{{ . }}" target="_blank" rel="noopener">YouTube</a>{{ end }}
+                    {{ with .Site.Params.instagram }}<a href="{{ . }}" target="_blank" rel="noopener">Instagram</a>{{ end }}
+                    {{ with .Site.Params.facebook }}<a href="{{ . }}" target="_blank" rel="noopener">Facebook</a>{{ end }}
+                </div>
+            </div>
+        </div>
+        <div class="footer-disclosure">
+            <p><strong>Affiliate Disclosure:</strong> {{ .Site.Params.affiliateDisclosure }}</p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ now.Year }} {{ .Site.Title }}. {{ .Site.Copyright }}</p>
+        </div>
+    </div>
+</footer>

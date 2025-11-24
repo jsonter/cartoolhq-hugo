@@ -1,0 +1,28 @@
+{{ define "main" }}
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-background"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h2 class="hero-title">Stop Guessing. Start Wrenching.</h2>
+            <p class="hero-subtitle">In-depth reviews and rankings of the best automotive tools and accessories</p>
+            <a href="#listicles" class="btn btn-primary">Browse Latest Comparisons</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Listicles Grid -->
+<section class="listicles-section" id="listicles">
+    <div class="container">
+        <h3 class="section-title">Latest Comparison Guides</h3>
+        <div class="listicle-grid">
+            {{ range first 6 (where .Site.RegularPages "Section" "listicles") }}
+                {{ partial "listicle-card.html" . }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+{{ end }}

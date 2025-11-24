@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+<!-- Static Page Layout -->
+<section class="page-content" style="padding: var(--spacing-3xl) 0; background-color: var(--bg-secondary);">
+    <div class="container">
+        <article style="max-width: 800px; margin: 0 auto;">
+            <h1 style="margin-bottom: var(--spacing-lg);">{{ .Title }}</h1>
+            
+            <div class="content" style="color: var(--text-secondary); line-height: 1.8;">
+                {{ .Content }}
+            </div>
+        </article>
+    </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{{ .Title }}",
+  "description": "{{ with .Params.excerpt }}{{ . }}{{ else }}{{ .Summary }}{{ end }}",
+  "url": "{{ .Permalink }}",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "author": {
+    "@type": "Organization",
+    "name": "{{ .Site.Params.author }}"
+  },
+  "itemListElement": [
+    {{ range $index, $product := .Params.products }}
+    {
+      "@type": "ListItem",
+      "position": {{ add $index 1 }},
+      "item": {
+        "@type": "Product",
+        "name": "{{ $product.name }}",
+        "description": "{{ $product.specs }}",
+        {{ with $product.image }}"image": "{{ . | absURL }}",{{ end }}
+        "url": "{{ $product.affiliate_link }}"
+      }
+    }{{ if ne $index (sub (len $.Params.products) 1) }},{{ end }}
+    {{ end }}
+  ]
+}
+</script>

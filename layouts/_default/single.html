@@ -1,0 +1,38 @@
+{{ define "main" }}
+
+<!-- Sample Listicle Section -->
+<section class="sample-listicle">
+    <div class="container">
+        <div class="listicle-header">
+            <span class="breadcrumb">
+                <a href="/">Home</a> / 
+                <a href="/listicles/">Reviews</a> / 
+                {{ with .Params.categories }}{{ index . 0 }}{{ end }}
+            </span>
+            <h2 class="listicle-title">{{ .Title }}</h2>
+            <p class="listicle-meta">
+                <span class="author">By {{ .Site.Params.author }}</span>
+                <span class="divider">•</span>
+                <span class="date">Updated {{ .Lastmod.Format "January 2, 2006" }}</span>
+            </p>
+            <div class="affiliate-notice">
+                <p>⚠️ We may earn a commission from purchases made through affiliate links, at no extra cost to you.</p>
+            </div>
+        </div>
+
+        <!-- Article Content (if any markdown body) -->
+        {{ if .Content }}
+        <div class="listicle-intro">
+            {{ .Content }}
+        </div>
+        {{ end }}
+
+        <!-- Ranked Products -->
+        {{ range .Params.products }}
+            {{ partial "ranked-product.html" . }}
+        {{ end }}
+
+    </div>
+</section>
+
+{{ end }}

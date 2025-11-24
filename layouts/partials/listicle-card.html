@@ -1,0 +1,16 @@
+<!-- Listicle Preview Card -->
+<article class="listicle-card">
+    <div class="card-image">
+        {{ with .Params.featured_image }}
+        <img src="{{ . }}" alt="{{ $.Title }}">
+        {{ else }}
+        <img src="https://placehold.co/800x600/141414/3b82f6?text={{ $.Title | truncate 30 }}" alt="{{ $.Title }}">
+        {{ end }}
+    </div>
+    <div class="card-content">
+        <span class="publish-date">{{ .Date.Format "January 2, 2006" }}</span>
+        <h4 class="card-title">{{ .Title }}</h4>
+        <p class="card-excerpt">{{ with .Params.excerpt }}{{ . }}{{ else }}{{ .Summary }}{{ end }}</p>
+        <a href="{{ .Permalink }}" class="btn btn-secondary">Read Comparison</a>
+    </div>
+</article>
