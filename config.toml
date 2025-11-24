@@ -1,6 +1,6 @@
 # CarToolHQ Hugo Configuration
 
-baseURL = "https://cartoolhq.com"
+baseURL = "https://cartoolhq-hugo.pages.dev"
 languageCode = "en-us"
 title = "CarToolHQ"
 # Using custom theme (layouts in root, no external theme needed)
